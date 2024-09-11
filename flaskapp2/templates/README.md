@@ -1,0 +1,1 @@
+flush chrome sockets: chrome://net-internals/#sockets
