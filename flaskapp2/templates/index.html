@@ -8,9 +8,15 @@
 </head>
 <body>
 <h1>Welcome to Flask App</h1>
-<form action="{{ url_for('submit') }}" method="POST">
-    <label for="user_input">Enter something:</label>
-    <input type="text" id="user_input" name="user_input" required>
+
+<form action="{{ url_for('submit_url') }}" method="POST">
+    <label for="url_input">Enter URL:</label>
+    <input type="text" id="url_input" name="user_input" required>
+    <button type="submit">Submit</button>
+</form>
+<form action="{{ url_for('submit_text') }}" method="POST">
+    <label for="text_input">Enter Text:</label>
+    <input type="text" id="text_input" name="user_input" required>
     <button type="submit">Submit</button>
 </form>
 {% if request.args.get('result') %}

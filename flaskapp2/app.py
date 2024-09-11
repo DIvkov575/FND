@@ -8,20 +8,21 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/submit', methods=['POST'])
-def submit():
+@app.route('/submit_text', methods=['POST'])
+def submit_text():
     if request.method == 'POST':
         user_input = request.form.get('user_input')
+        predict_news(user_input)
+        return redirect(url_for('index', result=""))
 
+@app.route('/submit_url', methods=['POST'])
+def submit_url():
+    if request.method == 'POST':
+        user_input = request.form.get('user_input')
+        print(user_input)
         a = fetch_webpage_contents(user_input)
-
         print(a)
-
         predict_news(a)
-
-
-
-
         return redirect(url_for('index', result=""))
 
 # @app.route('/result')
