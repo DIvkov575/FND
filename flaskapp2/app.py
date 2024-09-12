@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
+import time
 import logging
 from lib.soup import fetch
 from lib.load import predict_news
@@ -23,6 +24,7 @@ def result_page():
 
 @app.route('/submit', methods=['POST'])
 def submit():
+    time.sleep(2)
     if request.method == 'POST':
         url = request.form.get('url')
         text = request.form.get('text')
@@ -38,7 +40,7 @@ def submit():
 
             prediction = predict_news(contents)
             logger.info(f"{contents}\n{prediction}")
-            return redirect(url_for('result_page', result=prediction))
+            return redirect(url_for('result_page', result=prediction, analyzed_data=contents))
 
         except Exception as e:
             logger.error(e)

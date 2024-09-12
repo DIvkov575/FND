@@ -19,7 +19,6 @@
     </form>
 </div>
 
-
 <div class="container">
     {% if request.args.get('result') == '1' %}
     <h2>Input is likely to be valid</h2>
@@ -30,6 +29,11 @@
     <form action="/" method="GET">
         <input type="submit" value="Next 🔍">
     </form>
+</div>
+
+<div class="container">
+    <h1>Analyzed content</h1>
+    <h2>{{ request.args.get('analyzed_data') }}</h2>
 </div>
 
 <div class="footer">

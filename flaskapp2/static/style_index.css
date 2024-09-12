@@ -23,7 +23,7 @@ input[type="url"], textarea {
     width: 100%;
     padding: 12px;
     border: 1px solid #cccccc;
-    border-radius: 6px;
+    border-radius: 17px;
     font-size: 16px;
     color: #333333;
     background-color: #f9f9f9;
@@ -32,22 +32,46 @@ input[type="url"], textarea {
 textarea {
     margin-bottom: 25px;
     height: 250px;
+    border-radius: 17px;
     resize: none;
 }
 
-input[type="submit"] {
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 6px;
-    background-color: #e13434;
-    color: white;
-    font-size: 18px;
-    font-weight: 500;
-}
+/*input[type="submit"] {*/
+/*    width: 250px;*/
+/*    padding: 12px;*/
+/*    border: none;*/
+/*    border-radius: 17px;*/
+/*    background-color: #e13434;*/
+/*    color: white;*/
+/*    font-size: 18px;*/
+/*    font-weight: 500;*/
 
+/*}*/
+
+
+/*input[type="submit"]:hover {*/
+/*    background-color: #ec9090;*/
+/*    border-radius: 17px;*/
+/*    width: 250px;*/
+/*}*/
+
+
+input[type="submit"] {
+    width: 100px;
+    background-color: #fff;
+    height: 34px !important;
+    border-radius: 17px;
+    margin: 5px;
+    color: black;
+    padding: 0;
+    border: 1px solid #b4b4b4;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
 
 input[type="submit"]:hover {
-    background-color: #ec9090;
+    background-color: #93dacd;
 }
 
+.header {
+    width: 240px;
+}
