@@ -1,34 +1,58 @@
 from flask import Flask, render_template, request, redirect, url_for
-from lib.soup import fetch_webpage_contents
+import logging
+from lib.soup import fetch
 from lib.load import predict_news
 
 app = Flask(__name__)
 
+
 @app.route('/')
-def index():
+def index_page():
     return render_template('index.html')
 
-@app.route('/submit_text', methods=['POST'])
-def submit_text():
-    if request.method == 'POST':
-        user_input = request.form.get('user_input')
-        predict_news(user_input)
-        return redirect(url_for('index', result=""))
 
-@app.route('/submit_url', methods=['POST'])
-def submit_url():
-    if request.method == 'POST':
-        user_input = request.form.get('user_input')
-        print(user_input)
-        a = fetch_webpage_contents(user_input)
-        print(a)
-        predict_news(a)
-        return redirect(url_for('index', result=""))
+@app.route('/about')
+def about_page():
+    return render_template('about.html')
 
-# @app.route('/result')
-# def result():
-#     result = request.args.get('result', '')
-#     return f"Result: {result}"
+
+@app.route('/result_page')
+def result_page():
+    return render_template('result.html')
+
+
+@app.route('/submit', methods=['POST'])
+def submit():
+    if request.method == 'POST':
+        url = request.form.get('url')
+        text = request.form.get('text')
+        contents = ""
+
+        try:
+            if url:
+                contents = fetch(url)
+            elif text:
+                contents = text
+            else:
+                raise AssertionError("No prompt entered")
+
+            prediction = predict_news(contents)
+            logger.info(f"{contents}\n{prediction}")
+            return redirect(url_for('result_page', result=prediction))
+
+        except Exception as e:
+            logger.error(e)
+            return redirect(url_for('index_page'))
+
+    else:
+        logger.warning("unreachable GET request on /submit")
+        return redirect(url_for('index_page'))
+
 
 if __name__ == '__main__':
+    logging.basicConfig(level=logging.INFO,  # Set the logging level
+                        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',  # Log format
+                        handlers=[logging.StreamHandler()])  # Output to console
+
+    logger = logging.getLogger(__name__)
     app.run(debug=True)

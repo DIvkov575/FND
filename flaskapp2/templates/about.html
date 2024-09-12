@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL and Text Input Form</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_about.css') }}">
+
+</head>
+<body>
+<div class="header">
+    <form action="/" method="GET">
+        <input type="submit" value="The Scope 🔍" class="header-logo" style="width: 200px">
+    </form>
+    <form action="/About" method="GET">
+        <input type="submit" value="About" style="width: 100px">
+    </form>
+</div>
+
+
+<div class="container" style="padding: 30px">
+    <h1 style="margin: 0">About Us</h1>
+    <p>Verification of sources is very critical in a case like the ongoing conflict in Ukraine. We find ourselves in a time when misinformation and propaganda have just become common, especially in wartime, so the basis of credibly determining what we take in is very important. There have been numerous conflicting stories about the Ukrainian conflict, to which state-sponsored disinformation campaigns add in a reporting environment already muddled by partiality. Comparing news from several, credible sources, and considering the veracity of each source, would not only produce more comprehensive understanding of the true character of the conflict but also prevent the public from being misled by certain sensationalized or misleading reports. This is of great importance to the present day to keep the public current and to inspire effective global debate.</p>
+</div>
+<div class="container" style="padding: 30px;">
+    <h1>What can you do?</h1>
+    <p>To stop the spread of misinformation, always verify the credibility of information before sharing it. Cross-reference with reliable sources and watch for signs of bias or emotional manipulation. Educating yourself and others on media literacy is key, and refraining from spreading unverified content, even casually, helps reduce the problem.</p>
+</div>
+
+<div class="container" style="padding: 30px" id="donate-box">
+    <h2><a onclick="window.href='https://war.ukraine.ua/donate/'">Donate</a> to Ukrainian humanitarian efforts <a onclick="window.href='https://war.ukraine.ua/donate/'">*click me*</a></h2>
+    <div id="ukr-flag-wrapper">
+        <img src="{{url_for('static', filename='ukr-flag.png')}}" alt="ukrainian flag">
+    </div>
+</div>
+
+<div class="container" style="padding: 30px" id="share-box">
+    <h2>Share 'The Scope 🔍' </h2>
+    <div id="qr-wrapper">
+        <img src="{{url_for('static', filename='ukr-flag.png')}}" alt="ukrainian flag">
+    </div>
+</div>
+
+
+
+
+
+
+<div class="footer">
+    &copy; 2024 - The Scope 🔍
+</div>
+
+</body>
+</html>
+

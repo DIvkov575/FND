@@ -6,13 +6,13 @@
     <title>URL and Text Input Form</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style_index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_result.css') }}">
 
 </head>
 <body>
 <div class="header">
     <form action="/" method="GET">
-        <input type="submit" value="The Scope 🔍" style="width: 200px">
+        <input type="submit" value="The Scope 🔍" class="header-logo" style="width: 200px">
     </form>
     <form action="/about" method="GET">
         <input type="submit" value="About" style="width: 100px">
@@ -21,13 +21,14 @@
 
 
 <div class="container">
-    <h1>News Verification</h1>
+    {% if request.args.get('result') == '1' %}
+    <h2>Input is likely to be valid</h2>
+    {% elif request.args.get('result') == '0' %}
+    <h2>Input is likely to be false</h2>
+    {% endif %}
 
-    <form action="/submit" method="POST">
-        <input type="url" id="url" name="url" placeholder="https://example.com">
-        <h2>or</h2>
-        <textarea id="text" name="text" placeholder="Paste information for verification..."></textarea>
-        <input type="submit" value="Truth!">
+    <form action="/" method="GET">
+        <input type="submit" value="Next 🔍">
     </form>
 </div>
 
