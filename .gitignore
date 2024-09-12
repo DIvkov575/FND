@@ -4,3 +4,4 @@ venv/
 venv1/
 manual_testing.csv
 *.iml
+*/venv1/

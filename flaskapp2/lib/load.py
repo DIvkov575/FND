@@ -2,8 +2,8 @@ import joblib
 import string
 import re
 
-RFC = joblib.load('../out/random_forest_model.pkl')
-vectorization = joblib.load('../out/tfidf_vectorizer.pkl')
+RFC = joblib.load('weights/random_forest_model.pkl')
+vectorization = joblib.load('weights/tfidf_vectorizer.pkl')
 
 
 def wordopt(text):
