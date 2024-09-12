@@ -55,4 +55,7 @@ if __name__ == '__main__':
                         handlers=[logging.StreamHandler()])  # Output to console
 
     logger = logging.getLogger(__name__)
-    app.run(debug=True)
+
+    from waitress import serve
+    # app.run(debug=True)
+    serve(app, host='0.0.0.0', port=8080)
