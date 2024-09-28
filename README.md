@@ -1,3 +1,7 @@
+"Scope"–Verification
+---
+scopeverification.com
+
 flush chrome sockets: 
 chrome://net-internals/#sockets
 
